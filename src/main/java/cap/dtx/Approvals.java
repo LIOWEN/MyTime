@@ -2,6 +2,7 @@ package cap.dtx;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -30,6 +32,9 @@ public class Approvals extends AppCompatActivity {
     static HashMap<String,String> approvedItems;
     static ArrayList<String> checkedItems;
     ListAdapter adapter;
+    ProgressBar progressBar;
+
+
 
 
     @Override
@@ -37,11 +42,12 @@ public class Approvals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.approval_page);
 
-        approvalList = (ListView)findViewById(R.id.list);
-        submitBtn = (Button)findViewById(R.id.submitBtn);
-        assetManager = getAssets();
+        progressBar   = (ProgressBar)findViewById(R.id.progressBar);
+        approvalList  = (ListView)findViewById(R.id.list);
+        submitBtn     = (Button)findViewById(R.id.submitBtn);
+        assetManager  = getAssets();
         approvedItems = new HashMap<>();
-        checkedItems = new ArrayList<>();
+        checkedItems  = new ArrayList<>();
 
         //approvedItems.put("Test1", "Test2");
 
@@ -77,18 +83,36 @@ public class Approvals extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s = "";
-                for(int i = 0;i<checkedItems.size();i++){
-                    s += checkedItems.get(i) + "\n";
-                }
-                //will populate sql table instead of making a toast
-                Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
+                //Creates progress bar for when we upload to sql
+                progressBar.setVisibility(View.VISIBLE);
+                new AsyncTask<Void,Void,Void>(){
 
+                    @Override
+                    protected Void doInBackground(final Void... params){
+                        // Do loading here. Don't touch any views from here, and then return null
+                        String s = "";
+                        for (int i = 0; i < checkedItems.size(); i++) {
+                            s += checkedItems.get(i) + "\n";
+                        }
+                        //will populate sql table
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(final Void result){
+                        // Close progress
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }.execute();
+                //Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
                 Toast.makeText(getBaseContext(), "Holidays Submitted for Approval", Toast.LENGTH_SHORT).show();
             }
         });
+
+
         populateTestDataList();
         showList(approvedItems);
+        progressBar.setVisibility(View.GONE);
     }
 
     //#####################//
