@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="false">
+    <!--android:layout_alignBottom="@+id/relativeLayout2"-->
+
+
+    <EditText
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/taskNum"
+        android:hint="Task Number"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/projectCode"
+        android:layout_toEndOf="@+id/projectCode"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/capDarkBlue" />
+
+    <EditText
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/projectCode"
+        android:hint="Project Code"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/capDarkBlue" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number|numberDecimal"
+        android:ems="10"
+        android:id="@+id/hoursBox"
+        android:layout_below="@+id/projectCode"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="Time (Hours)"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/typeSelector"
+        android:layout_toStartOf="@+id/typeSelector"
+        android:textColor="@color/capDarkBlue" />
+
+    <Spinner
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/typeSelector"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/projectCode"
+        android:layout_toEndOf="@+id/projectCode"
+        android:layout_alignBottom="@+id/hoursBox"
+        android:layout_alignTop="@+id/hoursBox" />
+</RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_alignParentLeft="false"
+    android:layout_alignParentStart="true"
+    android:id="@+id/relativeLayout2"
+    android:layout_below="@+id/relativeLayout1"
+    >
+
+    <CalendarView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:id="@+id/calendarView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_below="@+id/relativeLayout2"
+    android:id="@+id/relativeLayout3"
+    android:layout_alignParentBottom="true">
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/submit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/capDarkBlue"
+        android:textColor="#FFFFFFFF"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="2dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/comment"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/submit"
+        android:hint="Comment"
+        android:textAlignment="gravity"
+        android:textIsSelectable="false"
+        android:layout_alignTop="@+id/submit"
+        android:layout_toLeftOf="@+id/submit"
+        android:textColor="@color/capDarkBlue" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/exp_hours"
+        android:layout_alignTop="@+id/text_exp_hours"
+        android:layout_toRightOf="@+id/text_exp_hours"
+        android:layout_toEndOf="@+id/text_exp_hours"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/hours_booked"
+        android:layout_alignTop="@+id/text_hours_booked"
+        android:layout_toRightOf="@+id/text_hours_booked"
+        android:layout_toEndOf="@+id/text_hours_booked"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="165"
+        android:id="@+id/hours_left"
+        android:layout_alignTop="@+id/text_hours_left"
+        android:layout_toRightOf="@+id/text_hours_left"
+        android:layout_toEndOf="@+id/text_hours_left"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Expected Hours:"
+        android:id="@+id/text_exp_hours"
+        android:layout_below="@+id/text_hours_booked"
+        android:layout_alignLeft="@+id/text_hours_booked"
+        android:layout_alignStart="@+id/text_hours_booked"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Hours Booked:"
+        android:id="@+id/text_hours_booked"
+        android:layout_alignTop="@+id/text_hours_left"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Hours Left to Book:"
+        android:id="@+id/text_hours_left"
+        android:layout_toRightOf="@+id/hours_booked"
+        android:layout_toEndOf="@+id/hours_booked"
+        android:layout_marginLeft="40dp" />
+</RelativeLayout>
+
+</RelativeLayout>
