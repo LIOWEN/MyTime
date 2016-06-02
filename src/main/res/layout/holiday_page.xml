@@ -2,4 +2,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <EditText
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:hint="Authorisation Code"
+        android:textColor="@color/capDarkBlue"
+        android:id="@+id/editText3"
+        android:layout_above="@+id/holidayList"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:hint="@string/authorisation_manager"
+        android:textColor="@color/capDarkBlue"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/editText3"
+        android:layout_toEndOf="@+id/editText3"
+        android:layout_marginTop="89dp" />
+
+    <Spinner
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/monthSelector"
+        android:hint="Month"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/holidayList"
+        android:nestedScrollingEnabled="true"
+        android:visibility="visible"
+        android:layout_below="@+id/editText2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

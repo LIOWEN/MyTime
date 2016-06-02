@@ -6,4 +6,5 @@
     <string name="holidays">Holidays</string>
     <string name="home">Home</string>
     <string name="approvals">Approvals</string>
+    <string name="authorisation_manager">Authorisation Manager</string>
 </resources>
