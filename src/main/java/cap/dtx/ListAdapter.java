@@ -63,31 +63,32 @@ public class ListAdapter extends BaseAdapter {
         final String projCode = pairs[0] + " " + pairs[1] + " " + pairs[2];
         String fullDate = pairs[3];
 
-        // TODO replace findViewById by ViewHolder
         ((TextView) result.findViewById(android.R.id.text1)).setText(projCode);
         ((TextView) result.findViewById(android.R.id.text1)).setTextColor(Color.parseColor("#FF0D0F4B"));
         ((TextView) result.findViewById(android.R.id.text2)).setText(fullDate);
         ((TextView) result.findViewById(android.R.id.text2)).setTextColor(Color.parseColor("#FF0D0F4B"));
-        //((TextView) result.findViewById(android.R.id.checkbox)).setText(item.getValue());
-        //((TextView) result.findViewById(android.R.id.checkbox)).setTextColor(Color.parseColor("#FF0D0F4B"));
+        ((TextView) result.findViewById(android.R.id.checkbox)).setText(item.getValue());
+        ((TextView) result.findViewById(android.R.id.checkbox)).setTextColor(Color.parseColor("#FF0D0F4B"));
 
 
-        if(Approvals.checkedItems.contains(pairs[01])) {
+        if(Approvals.checkedItems.contains(projCode + " " +fullDate)){
             result.setBackgroundColor(Color.parseColor("#01528E"));
         }
         else {
             result.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
         }
 
+
         for (int i = 0; i < Approvals.approvedItems.size(); i++) {
             if(item.getValue().equals("rejected")){
                 //result.set(Color.parseColor("#960018"));
                 ((TextView) result.findViewById(android.R.id.text1)).setTextColor(Color.parseColor("#960018"));
-                //((TextView) result.findViewById(android.R.id.checkbox)).setTextColor(Color.parseColor("#960018"));
+                ((TextView) result.findViewById(android.R.id.checkbox)).setTextColor(Color.parseColor("#960018"));
                 ((TextView) result.findViewById(android.R.id.text2)).setTextColor(Color.parseColor("#960018"));
 
             }
-        };
+        }
+
         return result;
     }
 }

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import java.util.HashMap;
 public class Approvals extends AppCompatActivity {
 
     ListView approvalList;
+    Button submitBtn;
     AssetManager assetManager;
     String testData;
     static HashMap<String,String> approvedItems;
@@ -36,6 +38,7 @@ public class Approvals extends AppCompatActivity {
         setContentView(R.layout.approval_page);
 
         approvalList = (ListView)findViewById(R.id.list);
+        submitBtn = (Button)findViewById(R.id.submitBtn);
         assetManager = getAssets();
         approvedItems = new HashMap<>();
         checkedItems = new ArrayList<>();
@@ -49,13 +52,14 @@ public class Approvals extends AppCompatActivity {
                 String[] keyValue = word.split("=");
                 String w = keyValue[0];
 
-                if (Approvals.checkedItems.contains(w)) {
-                    Approvals.checkedItems.remove(w);
+                if (checkedItems.contains(w)) {
+                    checkedItems.remove(w);
+                    Toast.makeText(getBaseContext(), w + " Removed", Toast.LENGTH_LONG).show();
                 } else {
-                    Approvals.checkedItems.add(w);
+                    checkedItems.add(w);
+                    Toast.makeText(getBaseContext(), w + " Added", Toast.LENGTH_LONG).show();
                 }
 
-                Toast.makeText(getBaseContext(), "w", Toast.LENGTH_LONG).show();
                 adapter.notifyDataSetChanged();
             }
         });
@@ -68,6 +72,19 @@ public class Approvals extends AppCompatActivity {
 
             @Override
             public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
+            }
+        });
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s = "";
+                for(int i = 0;i<checkedItems.size();i++){
+                    s += checkedItems.get(i) + "\n";
+                }
+                //will populate sql table instead of making a toast
+                Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
+
+                Toast.makeText(getBaseContext(), "Holidays Submitted for Approval", Toast.LENGTH_SHORT).show();
             }
         });
         populateTestDataList();
