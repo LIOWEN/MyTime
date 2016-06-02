@@ -34,9 +34,6 @@ public class Approvals extends AppCompatActivity {
     ListAdapter adapter;
     ProgressBar progressBar;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +80,11 @@ public class Approvals extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Creates progress bar for when we upload to sql
+
+                //################################################//
+                // Creates progress bar for when we upload to sql //
+                //################################################//
+
                 progressBar.setVisibility(View.VISIBLE);
                 new AsyncTask<Void,Void,Void>(){
 
