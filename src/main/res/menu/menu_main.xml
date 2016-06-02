@@ -10,6 +10,13 @@
         app:showAsAction="ifRoom"
         ></item>
     <item
+        android:id="@+id/action_profile"
+        android:orderInCategory="200"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="ifRoom"
+        ></item>
+    <item
         android:id="@+id/home"
         android:orderInCategory="1"
         android:title="@string/home"

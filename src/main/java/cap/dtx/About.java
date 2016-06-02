@@ -53,6 +53,11 @@ public class About extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.action_profile) {
+            Intent intent = new Intent(this, Profile.class);
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.home) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

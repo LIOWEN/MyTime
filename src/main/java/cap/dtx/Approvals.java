@@ -54,10 +54,10 @@ public class Approvals extends AppCompatActivity {
 
                 if (checkedItems.contains(w)) {
                     checkedItems.remove(w);
-                    Toast.makeText(getBaseContext(), w + " Removed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), w + " Removed", Toast.LENGTH_SHORT).show();
                 } else {
                     checkedItems.add(w);
-                    Toast.makeText(getBaseContext(), w + " Added", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), w + " Added", Toast.LENGTH_SHORT).show();
                 }
 
                 adapter.notifyDataSetChanged();
@@ -112,6 +112,11 @@ public class Approvals extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_calendar) {
             Intent intent = new Intent(this, Calendar.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.action_profile) {
+            Intent intent = new Intent(this, Profile.class);
             startActivity(intent);
             return true;
         }

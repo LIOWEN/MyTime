@@ -70,7 +70,6 @@ public class ListAdapter extends BaseAdapter {
         ((TextView) result.findViewById(android.R.id.checkbox)).setText(item.getValue());
         ((TextView) result.findViewById(android.R.id.checkbox)).setTextColor(Color.parseColor("#FF0D0F4B"));
 
-
         if(Approvals.checkedItems.contains(projCode + " " +fullDate)){
             result.setBackgroundColor(Color.parseColor("#01528E"));
         }
@@ -78,14 +77,12 @@ public class ListAdapter extends BaseAdapter {
             result.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
         }
 
-
         for (int i = 0; i < Approvals.approvedItems.size(); i++) {
             if(item.getValue().equals("rejected")){
-                //result.set(Color.parseColor("#960018"));
+                //result.setBackgroundColor(Color.parseColor("#960018"));
                 ((TextView) result.findViewById(android.R.id.text1)).setTextColor(Color.parseColor("#960018"));
                 ((TextView) result.findViewById(android.R.id.checkbox)).setTextColor(Color.parseColor("#960018"));
                 ((TextView) result.findViewById(android.R.id.text2)).setTextColor(Color.parseColor("#960018"));
-
             }
         }
 

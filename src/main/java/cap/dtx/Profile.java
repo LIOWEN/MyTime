@@ -1,25 +1,33 @@
 package cap.dtx;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CalendarView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by LIOWEN on 27/05/2016.
- */
-public class Calendar  extends AppCompatActivity {
+import java.io.IOException;
+import java.io.InputStream;
 
-    CalendarView calendar;
-    @Override
+/**
+ * Created by LIOWEN on 02/06/2016.
+ */
+public class Profile extends AppCompatActivity {
+    TextView text_first_name, first_name;
+    AssetManager assetManager;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calendar_page);
+        setContentView(R.layout.profile_page);
+        assetManager        = getAssets();
+        text_first_name     = (TextView)findViewById(R.id.text_first_name);
+        first_name          = (TextView)findViewById(R.id.first_name);
 
-        calendar = (CalendarView)findViewById(R.id.calendar);
+        first_name.setText(createTestData("testUsers"));
+
     }
 
     //#####################//
@@ -41,6 +49,11 @@ public class Calendar  extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_calendar) {
+            Intent intent = new Intent(this, Calendar.class);
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.action_profile) {
             Intent intent = new Intent(this, Profile.class);
             startActivity(intent);
@@ -77,5 +90,30 @@ public class Calendar  extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    //#####################################################//
+    //                    -TEST DATA-                      //
+    // extracts data from assets file                      //
+    // populates hashmap approvedItems                     //
+    //#####################################################//
+
+    public String createTestData(String file) {
+        InputStream input;
+        try {
+            input = assetManager.open(file);
+            int size = input.available();
+            byte[] buffer = new byte[size];
+            input.read(buffer);
+            input.close();
+            String text = new String(buffer);
+            text.trim();
+            text.replace("\n", "");
+            return text;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
